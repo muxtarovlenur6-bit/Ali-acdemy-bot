@@ -12,6 +12,9 @@ PARENT_BOT_USERNAME = os.getenv("PARENT_BOT_USERNAME", "").lstrip("@")
 
 SUPER_ADMIN_ID = int(os.getenv("SUPER_ADMIN_ID", "0"))
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///davomat.db")
+# Railway postgres:// ni postgresql:// ga o'zgartirish (SQLAlchemy 2.x talab qiladi)
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 MAIN_TEACHER = os.getenv("MAIN_TEACHER", "Nodirbek")
 CENTER_NAME = os.getenv("CENTER_NAME", "ALI ACADEMY")
 
